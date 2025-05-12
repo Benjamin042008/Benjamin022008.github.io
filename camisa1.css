@@ -76,3 +76,26 @@ button {
 button:hover {
   background-color: #003314;
 }
+.footer {
+  background-color: #004225;
+  color: #d7d7a8;
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1em;
+}
+
+.footer a {
+  color: #d7d7a8;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: auto;
+}
