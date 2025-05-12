@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pantalones</title>
+</head>
+<body>
+	<LINK REL="stylesheet" TYPE="text/css" HREF="c1.css">
+	<header> 
+<h1>Pantalon</h1>
+<nav>
+<div class="intro">
+<a href="pantalones.html">Regresar</a>
+<a href="carrito.html">Carrito</a>
+</div>
+</nav>
+</header>
+<div class="imag">
+<img src="pantalon6.jpeg" width="1000px" >
+</div>
+<h2>Pantalon gris oscuro corte recto</h2>
+<p>El pantalon es gris de corte recto hecho con una tela comoda para el usuario,estilo largo y elegante.</p>
+<span class="precio">$499.00</span>
+<button id="agregar-carrito">Agregar al carrito</button>
+<button id="comprar-ahora">Comprar ahora</button>
+<script>
+  const producto = {
+    nombre: "Pantalon gris oscuro corte recto",
+    precio: 499,
+    cantidad: 1
+  };
+
+  document.getElementById("agregar-carrito").addEventListener("click", () => {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  // Verifica si ya existe el producto en el carrito
+  const productoExistente = carrito.find(item => item.nombre === producto.nombre);
+  if (productoExistente) {
+    productoExistente.cantidad += 1;
+  } else {
+    carrito.push(producto);
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Mostrar alerta con confirmación
+  if (confirm("¡El producto ha sido agregado al carrito!\n¿Deseas ir al carrito ahora?")) {
+    window.location.href = "carrito.html"; // Redirige al carrito si el usuario acepta
+  }
+});
+
+  document.getElementById("comprar-ahora").addEventListener("click", () => {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const productoExistente = carrito.find(item => item.nombre === producto.nombre);
+
+    if (productoExistente) {
+      productoExistente.cantidad += 1;
+    } else {
+      carrito.push(producto);
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.location.href = "carrito.html"; // Redirige al carrito
+  });
+</script>
+</body>
+</html>

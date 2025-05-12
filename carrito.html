@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="carrito.css">
+  <title>Carrito de Compras</title>
+ <header style="background-color: #004225; padding: 20px 0;">
+  <div class="conteiner" style="max-width: 1200px; margin: auto; display: flex; flex-direction: column; align-items: center;">
+    <h1 style="color: #d7d7a8; font-size: 2.5em;">🛒 Carrito de Compras 🛒</h1>
+    <nav>
+      <div class="i" style="margin-top: 10px;">
+        <a href="Index.html" style="color: #d7d7a8; margin: 0 15px; text-decoration: none;">Inicio</a>
+        <a href="Producto.html" style="color: #d7d7a8; margin: 0 15px; text-decoration: none;">Productos</a>
+        <a href="formularios.html" style="color: #d7d7a8; margin: 0 15px; text-decoration: none;">Registrarme</a>
+        <a href="Contactos.html" style="color: #d7d7a8; margin: 0 15px; text-decoration: none;">Contactos</a>
+      </div>
+    </nav>
+  </div>
+</header>
+  <style>
+
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    button.eliminar { background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <table id="tabla-carrito">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="carrito-body">
+
+    </tbody>
+  </table>
+  <h2 id="total">Total: $0</h2>
+  <button id="comprar" style="padding: 20px 20px;">Comprar</button>
+  <a href="Pagina web.html">⬅ Volver a la tienda</a>
+
+
+  <script>
+    document.getElementById("comprar").addEventListener("click", () => {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+
+  window.location.href = "pago.html";
+});
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const tbody = document.getElementById("carrito-body");
+    const totalElement = document.getElementById("total");
+
+    function actualizarCarrito() {
+      tbody.innerHTML = "";
+      let total = 0;
+
+      carrito.forEach((item, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.nombre}</td>
+          <td>$${item.precio}</td>
+          <td>${item.cantidad}</td>
+          <td>$${item.precio * item.cantidad}</td>
+          <td><button class="eliminar" data-index="${index}">Eliminar</button></td>
+        `;
+        total += item.precio * item.cantidad;
+        tbody.appendChild(row);
+      });
+
+      totalElement.textContent = `Total: $${total}`;
+
+    }
+
+    tbody.addEventListener("click", function(e) {
+      if (e.target.classList.contains("eliminar")) {
+        const index = e.target.getAttribute("data-index");
+        carrito.splice(index, 1);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        actualizarCarrito();
+      }
+    });
+
+    actualizarCarrito();
+    document.getElementById("comprar").addEventListener("click", () => {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+
+  const confirmacion = confirm("¿Confirmas la compra?");
+  if (confirmacion) {
+    // Aquí podrías enviar datos a un servidor si tuvieras backend
+
+    alert("¡Gracias por tu compra!");
+    carrito = [];
+    localStorage.removeItem("carrito");
+    actualizarCarrito();
+   
+  }
+});
+  </script>
+
+  <br><br>
+
+
+</body>
+</html 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Pago</title>
+  <link rel="stylesheet" href="pago.css">
+</head>
+<body>
+
+<header>
+  <div class="i">
+    <a href="Index.html">Inicio</a>
+    <a href="Producto.html">Productos</a>
+    <a href="carrito.html">Carrito</a>
+    <a href="Contactos.html">Contactos</a>
+  </div>
+</header>
+
+<div class="form-container">
+  <h2>Completa tu información de pago</h2>
+  <form id="formulario-pago">
+    <input type="text" placeholder="Nombre del propietario" required>
+    <input type="text" placeholder="Número de tarjeta" required pattern="\d{16}" maxlength="16">
+    <input type="text" placeholder="Código postal" required>
+    <input type="text" placeholder="Dirección de envío" required>
+    <input type="text" placeholder="Ciudad" required>
+    <input type="text" placeholder="Estado" required>
+    <input type="text" placeholder="País" required>
+    <button type="submit">Finalizar Compra</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("formulario-pago").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("¡Compra realizada con éxito!");
+    localStorage.removeItem("carrito");
+    window.location.href = "Pagina web.html";
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<LINK REL="stylesheet" TYPE="text/css" HREF="practica9.css">
+	<title>Leector de palabras</title>
+</head>
+<body>
+	<div>
+<h3>Compilador de texto</h3>
+<textarea rows="20" id="texto"></textarea>
+<button onclick="contar()">Contar</button>
+<input type="text" id="num" style="width:100px;">
+</div>
+<script type="text/javascript">
+var texto = document.getElementById("texto");
+var num = document.getElementById("num");
+
+function contar(){
+var text = texto.value.length;
+num.value = text;
+}
+</script>
+
+</body>
+</html>

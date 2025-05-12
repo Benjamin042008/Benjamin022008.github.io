@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Primera pagina web</title>
+</head>
+<body>
+<LINK REL="stylesheet" TYPE="text/css" HREF="proyecto pagina web.css">
+<title>Vestimenta</title>
+<body>
+<header> <div class="conteiner">
+   <img src="Logo pagina web.jpg" class="imagen" />
+<nav>
+<div class="i">
+<a href="Producto.html">Productos</a>
+<a href="formulario.html">Registrarme</a>
+<a href="carrito.html">Carrito</a>
+<a href="Contactos.html">Contactos</a>
+</div>
+</nav>
+</div>
+
+</header>
+<div>
+<section id="Eslogan">
+<section id="Vestimenta">
+<div class="conteiner"></div>
+</div>
+<h3>Ofertas de la semana💯</h3>
+</seleccion>
+
+<div class="container">
+<div class="item">
+	<img src="imagenindex.jpeg" class="imagen"/>
+
+  <h2 class="texto">Conjunto verde con beige.</h2>
+<span class="precio">$899.00</span>
+<button class="agregar-carrito" data-nombre="Conjunto verde con beige" data-precio="899">Agregar carrito</button>
+</div>
+<div class="item">
+   <br><img src="imagenindex2.jpeg" class="imagen"/>
+   <h2 class="texto">Conjunto azul con blanco.</h2>
+<span class="precio">$999.00</span>
+<button class="agregar-carrito" data-nombre="Conjunto azul con blanco" data-precio="999">Agregar carrito</button>
+</div>
+<div class="item">
+    <br><img src="imagenindex3.jpeg" class="imagen"/>
+    <h2 class="texto">Conjunto cafe con blanco.</h2>
+<span class="precio">$799.00</span>
+<button class="agregar-carrito" data-nombre="Conjunto cafe con blanco" data-precio="799">Agregar carrito</button>
+    </div>
+</div>
+    <h3>Lo mas vendido🔥</h3>
+</seleccion>
+<div class="container">
+<div class="item">
+  <img src="camisa7.jpeg"class="imagen"/>
+  <h2 class="texto">Camisa blanca.</h2>
+<span class="precio">$299.00</span>
+<button class="agregar-carrito" data-nombre="Camisa blanca" data-precio="299">Agregar carrito</button>
+</div>
+<div class="item">
+    <br><img src="camisa6.jpeg"class="imagen"/>
+    <h2 class="texto">Camisa blanco con azul.</h2>
+<span class="precio">$499.00</span>
+<button class="agregar-carrito" data-nombre="Camisa blanco con azul" data-precio="499">Agregar carrito</button>
+</div>
+<div class="item">
+
+ <br><img src="pantalon1.jpeg"class="imagen"/>
+   <h2 class="texto">Pantalon blanco.</h2>
+<span class="precio">$499.00</span>
+<button class="agregar-carrito" data-nombre="Pantalon blanco" data-precio="499">Agregar carrito</button>
+</div>
+<div class="item">
+
+<br><img src="pantalon6.jpeg"class="imagen"/>
+  <h2 class="texto">Pantalon gris oscuro.</h2>
+<span class="precio">$299.00</span>
+<button class="agregar-carrito" data-nombre="Pantalon gris oscuro" data-precio="299">Agregar carrito</button>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="item">
+	<img src="imagenindex5.jpeg"class="imagen"/>
+  <h2 class="texto">Traje verde.</h2>
+<span class="precio">$2299.00</span>
+<button class="agregar-carrito" data-nombre="Conjunto verde con beige" data-precio="899">Agregar carrito</button>
+</div>
+<div class="item">
+    <br><img src="pantalon3.jpeg"class="imagen"/>
+    <h2 class="texto">Pantalon negro.</h2>
+<span class="precio">$299.00</span>
+<button class="agregar-carrito" data-nombre="Pantalon negro" data-precio="299">Agregar carrito</button>
+</div>
+<div class="item">
+
+ <br><img src="pantalon4.jpeg"class="imagen"/>
+   <h2 class="texto">Pantalon gris.</h2>
+<span class="precio">$299.00</span>
+<button class="agregar-carrito" data-nombre="Pantalon gris" data-precio="299">Agregar carrito</button>
+</div>
+<div class="item">
+
+<br><img src="pantalon5.jpeg"class="imagen"/>
+  <h2 class="texto">Pantalon cafe.</h2>
+<span class="precio">$299.00</span>
+<button class="agregar-carrito" data-nombre="Pantalon cafe" data-precio="299">Agregar carrito</button>
+</div>
+</div>
+</div><br>
+</section>
+<br><br><br><br><br>
+<br><center><p>Esta pagina fue creada con la intencion de buscar un estilo de ropa algo elegante y limpio por el gusto del creador de esta pagina,<br>en lo personal mi pagina esta hecha para buscar ropa en estilo "old money",<br>por que desde chico me ah gustado este tipo de vestimenta,espero te guste este estilo y puedas elegir lo que mas te guste.</p></center>
+
+<button><a href="Producto.html">Informacion</button></a>
+<script>
+  const botones = document.querySelectorAll(".agregar-carrito");
+
+  botones.forEach(boton => {
+    boton.addEventListener("click", () => {
+      const nombre = boton.getAttribute("data-nombre");
+      const precio = parseFloat(boton.getAttribute("data-precio"));
+      
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+      // Verificar si el producto ya está en el carrito
+      const productoExistente = carrito.find(item => item.nombre === nombre);
+
+      if (productoExistente) {
+        productoExistente.cantidad += 1;
+      } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+      }
+
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+     if (confirm("¡El producto ha sido agregado al carrito!\n¿Deseas ir al carrito ahora?")) {
+    window.location.href = "carrito.html"; // Redirige al carrito si el usuario acepta
+  }
+});
+    });
+
+</script>
+<footer class="footer">
+  <div class="footer-container">
+    <p>Creado por <strong>Arath Benjamin Garcia</strong> — Estilo y elegancia para todos. 💼</p>
+    <p>&copy; 2025 | Todos los derechos reservados</p>
+    <p>
+      <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+      <a href="mailto:correo@example.com">Contacto</a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
