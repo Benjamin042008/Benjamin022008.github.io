@@ -20,6 +20,16 @@
 <h2>Conjunto verde con blanco</h2>
 <p>El conjunto es sencillo una camisa verde junto con un pantalon de corte recto blanco muy comodo.</p>
 <span class="precio">$1199.00</span>
+	<label for="talla">Talla:</label>
+<select id="talla">
+  <option value="XS">XS</option>
+  <option value="S">S</option>
+  <option value="M" selected>M</option>
+  <option value="L">L</option>
+  <option value="XL">XL</option>
+</select>
+<br><br>
+
 <button id="agregar-carrito">Agregar al carrito</button>
 <button id="comprar-ahora">Comprar ahora</button>
 <script>
@@ -29,24 +39,50 @@
     cantidad: 1
   };
 
-  document.getElementById("agregar-carrito").addEventListener("click", () => {
-   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+ document.getElementById("agregar-carrito").addEventListener("click", () => {
+  const tallaSeleccionada = document.getElementById("talla").value;
 
-  // Verifica si ya existe el producto en el carrito
-  const productoExistente = carrito.find(item => item.nombre === producto.nombre);
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  // Verifica si ya existe el mismo producto con la misma talla
+  const productoExistente = carrito.find(item => item.nombre === producto.nombre && item.talla === tallaSeleccionada);
+
   if (productoExistente) {
     productoExistente.cantidad += 1;
   } else {
-    carrito.push(producto);
+    carrito.push({
+      ...producto,
+      talla: tallaSeleccionada
+    });
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
-  // Mostrar alerta con confirmación
   if (confirm("¡El producto ha sido agregado al carrito!\n¿Deseas ir al carrito ahora?")) {
-    window.location.href = "carrito.html"; // Redirige al carrito si el usuario acepta
+    window.location.href = "carrito.html";
   }
 });
+
+document.getElementById("comprar-ahora").addEventListener("click", () => {
+  const tallaSeleccionada = document.getElementById("talla").value;
+
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  const productoExistente = carrito.find(item => item.nombre === producto.nombre && item.talla === tallaSeleccionada);
+
+  if (productoExistente) {
+    productoExistente.cantidad += 1;
+  } else {
+    carrito.push({
+      ...producto,
+      talla: tallaSeleccionada
+    });
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  window.location.href = "carrito.html";
+});
+
 
   document.getElementById("comprar-ahora").addEventListener("click", () => {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
