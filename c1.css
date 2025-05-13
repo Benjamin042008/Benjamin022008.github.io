@@ -92,7 +92,21 @@ button {
   cursor: pointer;
   transition: all 0.3s ease; /* Animación suave */
 }
+select#talla {
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #004225;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #004225;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
 
+select#talla:focus {
+  border-color: #003314;
+}
 button:hover {
   background-color: #003314;
   transform: scale(1.05); /* Aumenta un poco el tamaño */
