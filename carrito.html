@@ -1,10 +1,21 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <LINK REL="stylesheet" TYPE="text/css" HREF="carrito.css">
+  <link rel="stylesheet" type="text/css" href="carrito.css">
   <title>Carrito de Compras</title>
- <header style="background-color: #004225; padding: 20px 0;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    button.eliminar { background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    button.cantidad { padding: 5px 10px; margin: 0 5px; }
+  </style>
+</head>
+<body>
+
+<header style="background-color: #004225; padding: 20px 0;">
   <div class="conteiner" style="max-width: 1200px; margin: auto; display: flex; flex-direction: column; align-items: center;">
     <h1 style="color: #d7d7a8; font-size: 2.5em;">🛒 Carrito de Compras 🛒</h1>
     <nav>
@@ -17,111 +28,90 @@
     </nav>
   </div>
 </header>
-  <style>
 
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-    button.eliminar { background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
-  </style>
-</head>
-<body>
+<table id="tabla-carrito">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Talla</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="carrito-body">
+    <!-- Se llena con JS -->
+  </tbody>
+</table>
 
-  <table id="tabla-carrito">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Total</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="carrito-body">
+<h2 id="total">Total: $0</h2>
+<button id="comprar" style="padding: 20px 20px;">Comprar</button>
+<a href="Pagina web.html">⬅ Volver a la tienda</a>
 
-    </tbody>
-  </table>
-  <h2 id="total">Total: $0</h2>
-  <button id="comprar" style="padding: 20px 20px;">Comprar</button>
-  <a href="Index.html">⬅ Volver a la tienda</a>
+<script>
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const tbody = document.getElementById("carrito-body");
+  const totalElement = document.getElementById("total");
 
+  function actualizarCarrito() {
+    tbody.innerHTML = "";
+    let total = 0;
 
-  <script>
-    document.getElementById("comprar").addEventListener("click", () => {
-  if (carrito.length === 0) {
-    alert("Tu carrito está vacío.");
-    return;
-  }
-
-  window.location.href = "pago.html";
-});
-
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const tbody = document.getElementById("carrito-body");
-    const totalElement = document.getElementById("total");
-
-    function actualizarCarrito() {
-      tbody.innerHTML = "";
-      let total = 0;
-
-      carrito.forEach((item, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${item.nombre}</td>
-          <td>$${item.precio}</td>
-          <td>${item.cantidad}</td>
-          <td>$${item.precio * item.cantidad}</td>
-          <td><button class="eliminar" data-index="${index}">Eliminar</button></td>
-        `;
-        total += item.precio * item.cantidad;
-        tbody.appendChild(row);
-      });
-
-      totalElement.textContent = `Total: $${total}`;
-
-    }
-
-    tbody.addEventListener("click", function(e) {
-      if (e.target.classList.contains("eliminar")) {
-        const index = e.target.getAttribute("data-index");
-        carrito.splice(index, 1);
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        actualizarCarrito();
-      }
+    carrito.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.nombre}</td>
+        <td>${item.talla || "—"}</td>
+        <td>$${item.precio}</td>
+        <td>
+          <button class="cantidad" data-index="${index}" data-accion="restar">-</button>
+          ${item.cantidad}
+          <button class="cantidad" data-index="${index}" data-accion="sumar">+</button>
+        </td>
+        <td>$${item.precio * item.cantidad}</td>
+        <td><button class="eliminar" data-index="${index}">Eliminar</button></td>
+      `;
+      total += item.precio * item.cantidad;
+      tbody.appendChild(row);
     });
 
-    actualizarCarrito();
-    document.getElementById("comprar").addEventListener("click", () => {
-  if (carrito.length === 0) {
-    alert("Tu carrito está vacío.");
-    return;
+    totalElement.textContent = `Total: $${total}`;
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
-  const confirmacion = confirm("¿Confirmas la compra?");
-  if (confirmacion) {
-    // Aquí podrías enviar datos a un servidor si tuvieras backend
-
-    alert("¡Gracias por tu compra!");
-    carrito = [];
-    localStorage.removeItem("carrito");
+  tbody.addEventListener("click", function(e) {
+    const index = e.target.getAttribute("data-index");
+    if (e.target.classList.contains("eliminar")) {
+      carrito.splice(index, 1);
+    } else if (e.target.classList.contains("cantidad")) {
+      const accion = e.target.getAttribute("data-accion");
+      if (accion === "sumar") {
+        carrito[index].cantidad += 1;
+      } else if (accion === "restar" && carrito[index].cantidad > 1) {
+        carrito[index].cantidad -= 1;
+      }
+    }
     actualizarCarrito();
-   
-  }
-});
-  </script>
+  });
 
-  <br><br>
+  document.getElementById("comprar").addEventListener("click", () => {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+      return;
+    }
 
-<footer class="footer">
-  <div class="footer-container">
-    <p>Creado por <strong>Arath Benjamin Garcia</strong> — Estilo y elegancia para todos. 💼</p>
-    <p>&copy; 2025 | Todos los derechos reservados</p>
-    <p>
-      <a href="https://www.instagram.com" target="_blank">Instagram</a> |
-      <a href="https://www.facebook.com" target="_blank">Facebook</a> |
-      <a href="mailto:correo@example.com">Contacto</a>
-    </p>
-  </div>
-</footer>
+    const confirmacion = confirm("¿Confirmas la compra?");
+    if (confirmacion) {
+      alert("¡Gracias por tu compra!");
+      carrito = [];
+      localStorage.removeItem("carrito");
+      actualizarCarrito();
+    }
+  });
+
+  actualizarCarrito();
+</script>
+
 </body>
-</html 
+</html>
