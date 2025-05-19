@@ -1,103 +1,86 @@
-/* Tipografía base */
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+font-family:normal;
 }
-
-/* Estilos de encabezado */
-header {
-  background-color: #004225;
-  color: #d7d7a8;
-  text-align: center;
-  padding: 20px 10px;
+h1{
+	font-size: 30px;
 }
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
+header{
+h1{text-align:center;
+color:#d7d7a8;}
+h2{font-size: 1.0em;}
+h3{font-size: 1.5em;}
+h3{ text-align:left;}
+p{font-size: 0.8em;}
+  }
+img{
+    max-width: 15%;
+    border-radius:5px;
+    border:5px;
+    margin:20px 1300px;
+    display:flex;
+flex-direction: column;
+align-items:left;
+      }
+button{
+font-size: .5em;
+padding:5px 10px;
+border-radius:10px;
+border:3px solid rgb( 120,130,120);
+font-color:black;
+background-color:#004225;
 }
-
-nav .i {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+header .conteiner{
+max-width: 1800px;
+margin:auto; }
+header{
+background-color:#004225;
+font-size: 2.4em;
+height: 200px;
 }
-
-nav .i a {
-  color: #d7d7a8;
-  text-decoration: none;
-  font-size: 1em;
+header .conteiner{
+display:flex;
+flex-direction: column;
+align-items:left;
 }
-
-nav .i a:hover {
-  color: #ffffff;
-  text-decoration: underline;
+ .ropa{
+flex-direction:left;
+text-align:left;
+padding-bottom: 25px;
 }
-
-/* Sección de contenido */
-.conteiner {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
+.Pantalon{
+flex-direction:left;
+text-align:left;
+padding-bottom: 25px;
 }
-
-h2 {
-  font-size: 1.5em;
+header a{
+color:#d7d7a8;
+font-size: 1.15em;
+text-decoration:none; 
+text-align:left;
 }
-
-h3 {
-  font-size: 1.2em;
-  text-align: left;
-}
-
-p {
-  font-size: 0.9em;
-}
-
-img {
-  max-width: 90%;
-  height: auto;
-  display: block;
-  margin: 10px auto;
-  border-radius: 5px;
-}
-
-/* Botones */
 button {
-  font-size: 0.9em;
+  font-size: .7em;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
   background-color: #004225;
   color: #d7d7a8;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; /* Animación suave */
 }
 
 button:hover {
   background-color: #003314;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+  transform: scale(1.05); /* Aumenta un poco el tamaño */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 
-/* Secciones */
-.ropa,
-.Pantalon,
-.otro,
-.Otro {
-  padding: 20px;
-  text-align: center;
-}
 
-/* Footer */
-.footer {
+  }
+  .footer {
   background-color: #004225;
   color: #d7d7a8;
   padding: 30px 20px;
   text-align: center;
+  margin-top: 50px;
   font-size: 1em;
 }
 
@@ -115,30 +98,13 @@ button:hover {
   max-width: 1000px;
   margin: auto;
 }
+  .i a {
+  color: #d7d7a8;          /* Cambia el color del enlace */
+  text-decoration: none;   /* Elimina el subrayado */
+  font-size: 1.0em;         /* Opcional: aumenta el tamaño de letra */
+  margin: 0 140px;           /* Espaciado entre enlaces */
+}
 
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 768px) {
-  header, nav, .conteiner, .footer {
-    text-align: center;
-  }
-
-  nav .i {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  img {
-    max-width: 100%;
-    margin: 10px auto;
-  }
-
-  h1 {
-    font-size: 1.5em;
-  }
-
-  h2, h3 {
-    font-size: 1.2em;
-  }
-
-  p {
-    font-size: 0.
+.i a:hover {
+  color: #ffffff;           /* Color al pasar el mouse */
+  text-decoration: underline;
