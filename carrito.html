@@ -2,15 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="carrito.css">
   <title>Carrito de Compras</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="carrito.css">
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     table { width: 100%; border-collapse: collapse; margin-top: 20px; }
     th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
     button.eliminar { background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
     button.cantidad { padding: 5px 10px; margin: 0 5px; }
+    .boton-comprar { background-color: green; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -46,9 +47,9 @@
 </table>
 
 <h2 id="total">Total: $0</h2>
-<a href="pago.html">
-  <button class="boton-comprar">Comprar</button>
-</a>
+
+<!-- Botón corregido con ID -->
+<button id="comprar" class="boton-comprar">Comprar</button>
 <a href="Index.html">⬅ Volver a la tienda</a>
 
 <script>
@@ -97,24 +98,19 @@
     actualizarCarrito();
   });
 
+  // ✅ Comprar con validación
   document.getElementById("comprar").addEventListener("click", () => {
     if (carrito.length === 0) {
       alert("Tu carrito está vacío.");
       return;
     }
 
-    const confirmacion = confirm("¿Confirmas la compra?");
-    if (confirmacion) {
-      alert("¡Gracias por tu compra!");
-      carrito = [];
-      localStorage.removeItem("carrito");
-      actualizarCarrito();
-    }
+    // Redirige a formulario de pago
+    window.location.href = "pago.html";
   });
 
   actualizarCarrito();
 </script>
-
 
 <footer class="footer">
   <div class="footer-container">
