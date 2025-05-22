@@ -218,7 +218,15 @@ button {
     width: 80%;
     max-width: 200px;
   }
+	/* Tamaño específico para el logo del encabezado */
+.logo {
+  width: 120px;
+  height: auto;
+  border-radius: 0; /* Opcional, en caso de que no quieras esquinas redondeadas */
+  margin: 10px auto;
+  display: block;
 }
+
 
 
 button:hover {
