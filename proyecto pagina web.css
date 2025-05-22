@@ -1,137 +1,122 @@
-font-family:normal;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
 
-h1{font-size: 3.2em;
-text-align: center;}
-h2{font-size: 3.0em;
-text-align: ; 		
-color:#d7d7a8;}
-h3{font-size: 3.2em;
-text-align: center;}
+/* ====== LOGO ====== */
+.logo {
+  width: 80px;
+  height: auto;
+}
 
-p{font-size: 1.0em;}
+/* ====== HEADER (parte verde) ====== */
+header {
+  background-color: #004225;
+  padding: 10px 40px;
+}
+
+header .conteiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* ====== NAV ====== */
+.i {
+  display: flex;
+  gap: 40px;
+}
+
+.i a {
+  color: #d7d7a8;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.i a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ====== TITULOS ====== */
+h1 {
+  font-size: 3.2em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 3.0em;
+  color: #d7d7a8;
+}
+
+h3 {
+  font-size: 3.2em;
+  text-align: center;
+}
+
+/* ====== CONTENIDO ====== */
+p {
+  font-size: 1em;
+}
+
+.texto {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.precio {
+  font-size: 2em;
+  padding: 5px 10px;
+}
+
+/* ====== CONTAINERS ====== */
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-    
-button{
-font-size: 1.0em;
-padding:15px 20px;
-border-radius:10px;
-border:3px solid rgb( 120,130,120);
-color:#d7d7a8;
-display: center;
-background-color:#004225;
-margin:5px 170px;
-text-decoration:none;
-}
-.i{
-	margin:10px 100px;
-    text-decoration: none;
-}
-header.conteiner{
-max-width: 180px;
-margin:auto; }
-header{
-background-color:#004225;
-font-size: 2.4em;
-}
-header .conteiner{
-display:flex;
-flex-direction: column;
-
-margin:10px 70px;
-}
-header .Compra{
-flex-direction:left;
-text-align:left;
-padding-bottom: 25px;
-}
-.intro{
-color:#d7d7a8;
-font-size: 1.15em;
-justify-content:center;
-text-decoration:none; 
-text-align:left;
- margin:50px 80px;
-}
-.precio{
-font-size: 2.0em;
-padding:5px 10px;
-}
-.of{
-
-	justify-content:center;
-	text-align:left;
-
-}
-.opcion{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:100px;
-    padding:0 20px;  
-
-       }
-     .opcione{
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap:0 80px
-    display: center;
-     margin:0px 100px;
- }
- #hero{
- 	text-align:center;
- 	padding:40px 0;
-     
- }
-.container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px;
+  gap: 20px;
+  padding: 20px;
 }
 
 .item {
-    text-align: center; 
-    width: 30%; 
-}
-.item1 {
-    text-align: center; 
-    width: 80%; 
+  flex: 1 1 250px;
+  max-width: 300px;
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .imagen {
-    width:100px; 
-    height:150px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
-.texto {
-    font-size: 26px;
-    margin: 10px 0; 
+/* ====== BOTONES ====== */
+button {
+  font-size: 1em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #004225;
+  color: #d7d7a8;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-top: 10px;
 }
 
-.boton {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
-}
-.i a {
-  color: #d7d7a8;          /* Cambia el color del enlace */
-  text-decoration: none;   /* Elimina el subrayado */
-  font-size: 1.2em;         /* Opcional: aumenta el tamaño de letra */
-  margin: 0 80px;           /* Espaciado entre enlaces */
+button:hover {
+  background-color: #003314;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.i a:hover {
-  color: #ffffff;           /* Color al pasar el mouse */
-  text-decoration: underline;
-}
+/* ====== FOOTER ====== */
 .footer {
   background-color: #004225;
   color: #d7d7a8;
@@ -156,81 +141,25 @@ padding:5px 10px;
   margin: auto;
 }
 
-button {
-  font-size: 1em;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  background-color: #004225;
-  color: #d7d7a8;
-  cursor: pointer;
-  transition: all 0.5s ease; /* Animación suave */
-}
-/* Estilos generales */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.item {
-  flex: 1 1 250px;
-  max-width: 300px;
-  text-align: center;
-  background-color: #f4f4f4;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.imagen {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.texto {
-  font-size: 1.1em;
-  margin: 10px 0;
-}
-
-/* Estilos para pantallas pequeñas */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  .container {
+  header .conteiner {
     flex-direction: column;
     align-items: center;
+  }
+
+  .i {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .logo {
+    margin-bottom: 10px;
   }
 
   .item {
     width: 90%;
     max-width: none;
   }
-
-  nav .i {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  header img {
-    width: 80%;
-    max-width: 100px;
-  }
-	/* Tamaño específico para el logo del encabezado */
-.logo {
-  width: 50px;
-  height: 80px;
-  border-radius: 0; /* Opcional, en caso de que no quieras esquinas redondeadas */
-  margin: 10px auto;
-  display: block;
 }
-
-
-
-button:hover {
-  background-color: #003314;
-  transform: scale(1.25); /* Aumenta un poco el tamaño */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-	}
