@@ -155,8 +155,11 @@ button:hover {
   }
 
   .logo {
-    margin-bottom: 10px;
-  }
+  width: 80px;
+  max-width: 100%;
+  height: auto;
+}
+
 
   .item {
     width: 90%;
