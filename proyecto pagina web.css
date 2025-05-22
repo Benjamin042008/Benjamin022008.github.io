@@ -220,7 +220,7 @@ button {
   }
 	/* Tamaño específico para el logo del encabezado */
 .logo {
-  width: 80px;
+  width: 50px;
   height: auto;
   border-radius: 0; /* Opcional, en caso de que no quieras esquinas redondeadas */
   margin: 10px auto;
